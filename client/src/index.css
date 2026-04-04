@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --card: #ffffff;
+  --cad-foreground: #0f172a;
+  --muted-foreground: #6b7280;
+}
+
+/* custome utility classes */
+.bg-card {
+    background-color: var(--card);
+}
+.text-card-foreground {
+    color: var(--cad-foreground);
+}
+.text-muted-foreground {
+    color: var(--muted-foreground);
+}
