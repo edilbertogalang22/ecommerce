@@ -1,4 +1,4 @@
-import { getAllUsers } from "../models/manageUserModel.js";
+import { getAllUsers } from "../../models/admin/user.model.js";
 
 export const fetchAllUsers = async (req, res) => {
   try {
@@ -11,3 +11,8 @@ export const fetchAllUsers = async (req, res) => {
   }
 };
 
+// update user
+export const updateUser = async () => {};
+
+// delete user
+export const deleteUser = async () => {};

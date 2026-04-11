@@ -13,8 +13,8 @@ const useManageProduct = () => {
   const fetchData = async () => {
     try {
       const [prodRes, catRes] = await Promise.all([
-        api.get("/auth/products"),
-        api.get("/auth/categories"),
+        api.get("/products"),
+        api.get("/categories"),
       ]);
 
       setProducts(prodRes.data);

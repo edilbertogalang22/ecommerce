@@ -6,7 +6,7 @@ const useManageUser = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await api.get("/auth/users");
+      const response = await api.get("/users");
       setUsers(response.data);
     } catch (err) {
       console.error("Error fetching users:", err);
@@ -15,7 +15,7 @@ const useManageUser = () => {
 
   useEffect(() => {
     fetchUsers();
-  });
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -30,6 +30,31 @@ const useManageUser = () => {
       user.email.toLowerCase().includes(search.toLowerCase()),
   );
 
-  return { search, handleSearchChange, filteredUsers, fetchUsers };
+  const handleUpdateUser = async (id, data) => {
+    try {
+      await api.put(`/auth/users/${id}`, data);
+      await fetchUsers(); // refresh UI
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteUser = async (id) => {
+    try {
+      await api.delete(`/auth/users/${id}`);
+      await fetchUsers(); // refresh UI
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return {
+    search,
+    handleSearchChange,
+    filteredUsers,
+    fetchUsers,
+    handleUpdateUser,
+    handleDeleteUser,
+  };
 };
 export default useManageUser;

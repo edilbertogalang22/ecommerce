@@ -1,4 +1,4 @@
-import db from "../config/db.js";
+import db from "../../config/db.js";
 
 export const fetchAllProducts = async () => {
   const [products] = await db.query(`
@@ -10,4 +10,16 @@ export const fetchAllProducts = async () => {
      ON products.category_id = categories.id`);
 
   return products;
+};
+
+export const createProduct = async () => {
+  
+};
+
+export const updateProduct = async () => {
+  
+};
+
+export const deleteProduct = async () => {
+  
 };

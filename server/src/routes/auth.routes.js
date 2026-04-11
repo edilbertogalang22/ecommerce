@@ -2,7 +2,7 @@ import {
   loginUsers,
   logoutUsers,
   registerUsers,
-} from "../controllers/authController.js";
+} from "../controllers/auth.controller.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 import express from "express";
 

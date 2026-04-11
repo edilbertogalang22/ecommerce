@@ -2,9 +2,9 @@ import {
   loginUser,
   updateUserStatus,
   logoutUserById,
-} from "../models/authModel.js";
+  registerUser,
+} from "../models/auth.model.js";
 import { generateToken } from "../middleware/authMiddleware.js";
-import { registerUser } from "../models/authModel.js";
 
 export const loginUsers = async (req, res) => {
   const { email, password } = req.body;

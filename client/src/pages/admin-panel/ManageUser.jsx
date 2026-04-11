@@ -1,11 +1,43 @@
 import useManageUser from "../../hooks/useManageUser";
+import { useModal } from "../../context/ModalContext";
+import ViewUsersModal from "../../components/ui/modal/ViewUsersModal";
+import UpdateUsersModal from "../../components/ui/modal/UpdateUsersModal";
+import DeleteUsersModal from "../../components/ui/modal/DeleteUsersModal";
 import Input from "../../components/ui/Input";
 import { Search, Eye, Pencil, Trash2 } from "lucide-react";
 import Button from "../../components/ui/Button";
-
 import { cn } from "../../lib/utils";
+
 const ManageUser = () => {
-  const { search, handleSearchChange, filteredUsers } = useManageUser();
+  const {
+    search,
+    handleSearchChange,
+    filteredUsers,
+    handleUpdateUser,
+    handleDeleteUser,
+  } = useManageUser();
+  const { openModal, closeModal, modalType, modalData } = useModal();
+
+  // remove admin users once (cleaner)
+  const users = filteredUsers.filter((user) => user.user_type !== 1);
+
+  const modalMap = {
+    view: <ViewUsersModal onClose={closeModal} user={modalData} />,
+    edit: (
+      <UpdateUsersModal
+        onClose={closeModal}
+        user={modalData}
+        onSubmit={handleUpdateUser}
+      />
+    ),
+    delete: (
+      <DeleteUsersModal
+        onClose={closeModal}
+        user={modalData}
+        onConfirm={handleDeleteUser}
+      />
+    ),
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-6">
@@ -57,77 +89,93 @@ const ManageUser = () => {
                   Status
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  Date Registered
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Action
                 </th>
               </tr>
             </thead>
 
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredUsers.filter((user) => user.user_type !== 1).length ===
-              0 ? (
+              {users.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-4 text-center">
+                  <td colSpan={9} className="px-6 py-4 text-center">
                     No users found
                   </td>
                 </tr>
               ) : (
-                filteredUsers
-                  .filter((user) => user.user_type !== 1)
-                  .map((user) => (
-                    <tr key={user.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.id}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.firstname}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.lastname}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.address}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.contact}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {user.email}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        <span
-                          className={cn(
-                            "px-2 py-1 inline-flex text-xs font-semibold rounded-full",
-                            user.status === 1
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800",
-                          )}
+                users.map((user) => (
+                  <tr key={user.id}>
+                    <td className="px-6 py-4 text-sm">{user.id}</td>
+                    <td className="px-6 py-4 text-sm">{user.firstname}</td>
+                    <td className="px-6 py-4 text-sm">{user.lastname}</td>
+                    <td className="px-6 py-4 text-sm">{user.address}</td>
+                    <td className="px-6 py-4 text-sm">{user.contact}</td>
+                    <td className="px-6 py-4 text-sm">{user.email}</td>
+
+                    <td className="px-6 py-4 text-sm">
+                      <span
+                        className={cn(
+                          "px-2 py-1 inline-flex text-xs font-semibold rounded-full",
+                          user.status === 1
+                            ? "bg-green-100 text-green-800"
+                            : "bg-red-100 text-red-800",
+                        )}
+                      >
+                        {user.status === 1 ? "✔ Online" : "✖ Offline"}
+                      </span>
+                    </td>
+
+                    <td className="px-6 py-4 text-sm">
+                      <span className="px-2 inline-flex text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                        {new Date(user.created_at).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </span>
+                    </td>
+
+                    <td className="px-6 py-3">
+                      <div className="flex gap-2">
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          onClick={() => openModal("view", user)}
                         >
-                          {user.status === 1 ? "✔ Online" : "✖ Offline"}
-                        </span>
-                      </td>
-                      <td className="px-6 py-3">
-                        <div className="flex gap-2">
-                          <Button variant="primary" size="sm">
-                            <Eye className="w-4 h-4" />
-                          </Button>
+                          <Eye className="w-4 h-4" />
+                        </Button>
 
-                          <Button variant="secondary" size="sm">
-                            <Pencil className="w-4 h-4" />
-                          </Button>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => openModal("edit", user)}
+                        >
+                          <Pencil className="w-4 h-4" />
+                        </Button>
 
-                          <Button variant="danger" size="sm">
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => openModal("delete", user)}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
               )}
             </tbody>
           </table>
         </div>
       </div>
+
+      {/* MODAL RENDER (FIXED) */}
+      {modalMap[modalType] || null}
     </div>
   );
 };
+
 export default ManageUser;

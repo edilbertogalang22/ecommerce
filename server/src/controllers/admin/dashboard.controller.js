@@ -3,7 +3,7 @@ import {
   getTotalOrders,
   getTotalProducts,
   getTotalRevenue,
-} from "../models/adminModel.js";
+} from "../../models/admin/dashboard.model.js";
 
 export const getDashboardStats = async (req, res) => {
   try {

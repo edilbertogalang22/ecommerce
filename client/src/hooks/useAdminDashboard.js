@@ -15,7 +15,7 @@ const useAdminDashboard = () => {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const res = await api.get("/auth/dashboard");
+        const res = await api.get("/admin");
         setStats(res.data);
       } catch (err) {
         console.error(err);

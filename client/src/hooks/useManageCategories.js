@@ -6,7 +6,7 @@ const useManageCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await api.get("/auth/categories");
+      const response = await api.get("/categories");
       setCategories(response.data);
     } catch (err) {
       console.error("Error fetching categories:", err);

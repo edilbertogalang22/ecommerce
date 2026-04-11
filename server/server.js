@@ -7,8 +7,11 @@ import cors from "cors";
 import db from "./src/config/db.js";
 
 // import routes
-import authRoute from "./src/routes/authRoute.js";
-import adminRoute from "./src/routes/adminRoute.js";
+import authRoute from "./src/routes/auth.routes.js";
+import dashboardRoute from "./src/routes/admin/dashboard.routes.js";
+import userRoutes from "./src/routes/admin/user.routes.js";
+import productRoutes from "./src/routes/admin/product.routes.js";
+import categoryRoutes from "./src/routes/admin/category.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,7 +23,10 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoute);
-app.use("/api/auth", adminRoute);
+app.use("/api/admin", dashboardRoute);
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
 // Start the server
 async function startServer() {
   try {
