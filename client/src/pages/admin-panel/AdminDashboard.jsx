@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   if (loading) return <p>Loading Dashboard...</p>;
   if (error) return <p>Error loading stats: {error.message}</p>;
   return (
-    <div className="min-h-screen space-y-6 ml-1 mr-1">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-6  space-y-6">
       <div className="flex p-8 bg-gray-200 items-center justify-center">
         <h1 className="text-blue-400 font-bold text-2xl">Admin Dashboard</h1>
       </div>

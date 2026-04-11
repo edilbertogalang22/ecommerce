@@ -1,7 +1,10 @@
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
-
+import useRegister from "../hooks/useRegister";
+import { cn } from "../lib/utils";
 const Register = () => {
+  const { register, handleChange, handleSubmit, loading, message, isError } =
+    useRegister();
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-7xl bg-white rounded-xl shadow-md p-6 sm:p-8">
@@ -11,7 +14,17 @@ const Register = () => {
         </h1>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          {message && (
+            <p
+              className={cn(
+                "text-center mb-4 text-white rounded-xl px-2 py-3",
+                isError ? "bg-red-500" : "bg-green-500",
+              )}
+            >
+              {message}
+            </p>
+          )}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* First Name */}
             <div>
@@ -23,9 +36,12 @@ const Register = () => {
               </label>
               <Input
                 type="text"
-                id="firstname"
+                name="firstname"
                 placeholder="Enter your first name"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                value={register.firstname}
+                onChange={handleChange}
+                required
               />
             </div>
 
@@ -39,9 +55,12 @@ const Register = () => {
               </label>
               <Input
                 type="text"
-                id="lastname"
+                name="lastname"
                 placeholder="Enter your last name"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                value={register.lastname}
+                onChange={handleChange}
+                required
               />
             </div>
             <div>
@@ -52,9 +71,12 @@ const Register = () => {
                 Address
               </label>
               <Input
-                id="address"
+                name="address"
                 placeholder="Enter your address"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                value={register.address}
+                onChange={handleChange}
+                required
               />
             </div>
             <div>
@@ -65,9 +87,12 @@ const Register = () => {
                 Contact
               </label>
               <Input
-                id="contact"
+                name="contact"
                 placeholder="Enter your contact number"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                value={register.contact}
+                onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -81,9 +106,12 @@ const Register = () => {
             </label>
             <Input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              value={register.email}
+              onChange={handleChange}
+              required
             />
           </div>
 
@@ -97,9 +125,12 @@ const Register = () => {
             </label>
             <Input
               type="password"
-              id="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              value={register.password}
+              onChange={handleChange}
+              required
             />
           </div>
 
@@ -113,18 +144,25 @@ const Register = () => {
             </label>
             <Input
               type="password"
-              id="confirmPassword"
+              name="confirmPassword"
               placeholder="Confirm your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              value={register.confirmPassword}
+              onChange={handleChange}
+              required
             />
           </div>
 
           {/* Button */}
           <Button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-600 transition"
+            variant="primary"
+            size="md"
+            className={cn(
+              "px-20 py-3 mx-auto flex items-center justify-center",
+              loading ? "opacity-50 cursor-not-allowed" : "opacity-100",
+            )}
           >
-            Sign up
+            {loading ? "loading..." : "Registered"}
           </Button>
         </form>
       </div>

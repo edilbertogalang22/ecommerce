@@ -30,7 +30,6 @@ const useAuth = () => {
 
       localStorage.setItem("token", token);
 
-      console.log("token", token);
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -59,20 +58,19 @@ const useAuth = () => {
       setMessage(msg);
     }
   };
-
   const handleLogout = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
     try {
-      await api.post("/auth/logout", {
-        id: user.id,
-      });
+      // Send request to backend with token in header only
+      await api.post("/auth/logout"); // No body needed
+
+      // Clear localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
+      // Redirect to login page
       navigate("/login", { replace: true });
     } catch (err) {
-      console.log(err);
+      console.error("Logout failed:", err);
     }
   };
 

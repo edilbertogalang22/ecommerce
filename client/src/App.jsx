@@ -16,8 +16,12 @@ import ManageUser from "./pages/admin-panel/ManageUser";
 import ManageCategories from "./pages/admin-panel/ManageCategories";
 import ManageProducts from "./pages/admin-panel/ManageProducts";
 import ManageOrders from "./pages/admin-panel/ManageOrders";
+
+// Users Panel
 import UserDashboard from "./pages/users-panel/UserDashboard";
 
+// Not Found Page
+import NotFound from "./pages/NotFound";
 const App = () => {
   return (
     <Routes>
@@ -43,6 +47,7 @@ const App = () => {
       </Route>
 
       {/* Fallback Not Found */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

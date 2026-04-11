@@ -40,3 +40,9 @@ export const CardContent = ({ className, ...props }) => {
 export const CardFooter = ({ className, ...props }) => {
   return <div className={cn("p-4 border-t", className)} {...props} />;
 };
+
+export const CardImage = ({ className, ...props }) => {
+  return (
+    <img className={cn("rounded-tl-xl rounded-tr-xl w-full aspect-[4/3] bg-gray-100 object-cover", className)} {...props} />
+  );
+};

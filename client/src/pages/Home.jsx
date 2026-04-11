@@ -64,7 +64,11 @@ const Home = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <img src="" alt="" className="w-full h-64 object-cover" />
+              <img
+                src="https://www.logoai.com/oss/ai-art/out-product-staging.png?v=1760076871756&x-oss-process=image%2Fresize,m_fixed,w_500,h_0%2Fformat,webp"
+                alt=""
+                className="w-full h-64 object-cover"
+              />
               <CardContent className="p-6">
                 <h3 className="font-semibold text-lg mb-2">MacBook Pro 16"</h3>
                 <p className="text-gray-600 text-sm mb-6 line-clamp-3">

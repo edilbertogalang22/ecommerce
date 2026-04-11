@@ -23,3 +23,4 @@ export const getTotalCustomers = async () => {
   );
   return rows[0].customers || 0;
 };
+

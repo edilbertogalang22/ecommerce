@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
-import { logout } from "../helper/AdminAuthLogout.js";
-import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth"; // import your auth hook
 import { Home, Users, Tag, Box, ShoppingCart, LogOut } from "lucide-react";
 
 const useAdminSidebar = () => {
-  const navigate = useNavigate();
+  const { handleLogout } = useAuth(); // get the proper logout function
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -16,8 +15,10 @@ const useAdminSidebar = () => {
     setIsOpen(false);
   };
 
-  const hanleLogout = () => {
-    logout(navigate);
+  // Wrap handleLogout to close sidebar after logout
+  const hanleLogout = async () => {
+    await handleLogout(); // calls backend and clears localStorage
+    handleClose(); // close sidebar
   };
 
   const menuItems = [
