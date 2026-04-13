@@ -32,7 +32,7 @@ const useManageUser = () => {
 
   const handleUpdateUser = async (id, data) => {
     try {
-      await api.put(`/auth/users/${id}`, data);
+      await api.put(`/users/update-user/${id}`, data);
       await fetchUsers(); // refresh UI
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ const useManageUser = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      await api.delete(`/auth/users/${id}`);
+      await api.delete(`/users/delete-user/${id}`);
       await fetchUsers(); // refresh UI
     } catch (err) {
       console.error(err);

@@ -1,8 +1,9 @@
 import useManageUser from "../../hooks/useManageUser";
 import { useModal } from "../../context/ModalContext";
-import ViewUsersModal from "../../components/ui/modal/ViewUsersModal";
-import UpdateUsersModal from "../../components/ui/modal/UpdateUsersModal";
-import DeleteUsersModal from "../../components/ui/modal/DeleteUsersModal";
+import ViewUsersModal from "../../components/ui/modal/usersmodal/ViewUsersModal";
+import UpdateUsersModal from "../../components/ui/modal/usersmodal/UpdateUsersModal";
+import DeleteUsersModal from "../../components/ui/modal/usersmodal/DeleteUsersModal";
+
 import Input from "../../components/ui/Input";
 import { Search, Eye, Pencil, Trash2 } from "lucide-react";
 import Button from "../../components/ui/Button";
@@ -16,6 +17,7 @@ const ManageUser = () => {
     handleUpdateUser,
     handleDeleteUser,
   } = useManageUser();
+  
   const { openModal, closeModal, modalType, modalData } = useModal();
 
   // remove admin users once (cleaner)
@@ -71,19 +73,10 @@ const ManageUser = () => {
                   ID
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  First Name
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Last Name
+                  Full Name
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Address
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Contact
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  Email
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Status
@@ -108,12 +101,10 @@ const ManageUser = () => {
                 users.map((user) => (
                   <tr key={user.id}>
                     <td className="px-6 py-4 text-sm">{user.id}</td>
-                    <td className="px-6 py-4 text-sm">{user.firstname}</td>
-                    <td className="px-6 py-4 text-sm">{user.lastname}</td>
+                    <td className="px-6 py-4 text-sm">
+                      {`${user.firstname} ${user.lastname}`}
+                    </td>
                     <td className="px-6 py-4 text-sm">{user.address}</td>
-                    <td className="px-6 py-4 text-sm">{user.contact}</td>
-                    <td className="px-6 py-4 text-sm">{user.email}</td>
-
                     <td className="px-6 py-4 text-sm">
                       <span
                         className={cn(

@@ -73,6 +73,32 @@ const useManageProduct = () => {
   }
 
   // Create new product
+  const handleCreateProduct = async (formData) => {
+    try {
+      await api.post("/products/create-product", formData);
+      await fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleUpdateProduct = async (id, data) => {
+    try {
+      await api.put(`/products/update-product/${id}`, data);
+      await fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteProduct = async (id) => {
+    try {
+      await api.delete(`/products/delete-product/${id}`); // Replace with your actual API endpoint
+      await fetchData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return {
     search,
@@ -86,6 +112,10 @@ const useManageProduct = () => {
     handleSortPriceChange,
 
     filteredProducts,
+
+    handleCreateProduct,
+    handleUpdateProduct,
+    handleDeleteProduct,
   };
 };
 

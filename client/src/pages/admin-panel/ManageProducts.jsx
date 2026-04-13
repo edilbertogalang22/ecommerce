@@ -1,4 +1,11 @@
 import useManageProduct from "../../hooks/useManageProduct";
+
+import { useModal } from "../../context/ModalContext";
+import AddProductModal from "../../components/ui/modal/productmodal/AddProductModal";
+import ViewProductModal from "../../components/ui/modal/productmodal/ViewProductModal";
+import UpdateProductModal from "../../components/ui/modal/productmodal/UpdateProductModal";
+import DeleteProductModal from "../../components/ui/modal/productmodal/DeleteProductModal";
+
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
 import { Search, Eye, Pencil, Trash2, CopyPlus } from "lucide-react";
@@ -21,7 +28,44 @@ const ManageProducts = () => {
     categories,
     handleSortPriceChange,
     sortOrderPrice,
+    handleCreateProduct,
+    handleUpdateProduct,
+    handleDeleteProduct,
   } = useManageProduct();
+
+  const { openModal, closeModal, modalType, modalData } = useModal();
+
+  const modalMap = {
+    add: (
+      <AddProductModal
+        onClose={closeModal}
+        onSubmit={handleCreateProduct}
+        categories={categories}
+      />
+    ),
+    view: (
+      <ViewProductModal
+        onClose={closeModal}
+        product={modalData}
+        categories={categories}
+      />
+    ),
+    edit: (
+      <UpdateProductModal
+        onClose={closeModal}
+        product={modalData}
+        onSubmit={handleUpdateProduct}
+        categories={categories}
+      />
+    ),
+    delete: (
+      <DeleteProductModal
+        onClose={closeModal}
+        product={modalData}
+        onConfirm={handleDeleteProduct}
+      />
+    ),
+  };
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-6">
       <div className="flex p-6 md:p-8 bg-gray-200 items-center justify-center mb-6 md:mb-8">
@@ -75,6 +119,7 @@ const ManageProducts = () => {
             variant="primary"
             size="md"
             className="w-full md:w-auto flex items-center justify-center shadow-sm"
+            onClick={() => openModal("add")}
           >
             <CopyPlus className="w-4 h-4 mr-2" />
             Add Product
@@ -113,17 +158,31 @@ const ManageProducts = () => {
               </CardContent>
 
               <CardFooter>
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => openModal("view", product)}
+                >
                   <Eye className="w-4 h-4 mr-2" />
                   View
                 </Button>
 
-                <Button variant="outline" size="sm" className="ml-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="ml-2"
+                  onClick={() => openModal("edit", product)}
+                >
                   <Pencil className="w-4 h-4 mr-2" />
                   Edit
                 </Button>
 
-                <Button variant="outline" size="sm" className="ml-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="ml-2"
+                  onClick={() => openModal("delete", product)}
+                >
                   <Trash2 className="w-4 h-4 mr-2" />
                   Delete
                 </Button>
@@ -132,6 +191,8 @@ const ManageProducts = () => {
           ))
         )}
       </div>
+      {/* MODAL RENDER (FIXED) */}
+      {modalMap[modalType] || null}
     </div>
   );
 };

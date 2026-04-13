@@ -1,6 +1,10 @@
 import express from "express";
 import { verifyToken } from "../../middleware/authMiddleware.js";
-import { fetchAllUsers, updateUser, deleteUser } from "../../controllers/admin/user.controller.js";
+import {
+  fetchAllUsers,
+  updateUser,
+  deleteUser,
+} from "../../controllers/admin/user.controller.js";
 const router = express.Router();
 
 router.get("/", verifyToken([1]), fetchAllUsers);

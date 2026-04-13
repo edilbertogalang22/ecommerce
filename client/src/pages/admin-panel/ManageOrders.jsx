@@ -10,6 +10,7 @@ import {
 
 
 const ManageOrders = () => {
+  
   return (
     <div className="bg-gray-100 min-h-screen p-4 md:p-6 ">
       <div className="flex p-6 md:p-8 bg-gray-200 items-center justify-center mb-6 md:mb-8">
