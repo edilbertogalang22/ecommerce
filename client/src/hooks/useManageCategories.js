@@ -6,7 +6,7 @@ const useManageCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await api.get("/categories");
+      const response = await api.get("/admin/categories");
       setCategories(response.data);
     } catch (err) {
       console.error("Error fetching categories:", err);
@@ -59,7 +59,7 @@ const useManageCategories = () => {
 
   const handleCreateCategory = async (formData) => {
     try {
-      await api.post("/categories/create-category", formData);
+      await api.post("/admin/categories/create-category", formData);
       await fetchCategories();
     } catch (err) {
       console.error(err);
@@ -68,7 +68,7 @@ const useManageCategories = () => {
 
   const handleUpdateCategory = async (id, data) => {
     try {
-      await api.put(`/categories/update-category/${id}`, data);
+      await api.put(`/admin/categories/update-category/${id}`, data);
       await fetchCategories();
     } catch (err) {
       console.error(err);
@@ -77,7 +77,7 @@ const useManageCategories = () => {
 
   const handleDeleteCategory = async (id) => {
     try {
-      await api.delete(`/categories/delete-category/${id}`);
+      await api.delete(`/admin/categories/delete-category/${id}`);
       await fetchCategories();
     } catch (err) {
       console.error(err);

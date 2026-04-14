@@ -8,7 +8,7 @@ import {
 } from "../../controllers/admin/category.controller.js";
 const router = express.Router();
 
-router.get("/", verifyToken([1]), fetchCategories);
+router.get("/", fetchCategories);
 router.post("/create-category", verifyToken([1]), createCategory);
 router.put("/update-category/:id", verifyToken([1]), updateCategory);
 router.delete("/delete-category/:id", verifyToken([1]), deleteCategory);

@@ -7,7 +7,7 @@ import {
 } from "../../controllers/admin/user.controller.js";
 const router = express.Router();
 
-router.get("/", verifyToken([1]), fetchAllUsers);
+router.get("/",  fetchAllUsers);
 router.put("/update-user/:id", verifyToken([1]), updateUser);
 router.delete("/delete-user/:id", verifyToken([1]), deleteUser);
 

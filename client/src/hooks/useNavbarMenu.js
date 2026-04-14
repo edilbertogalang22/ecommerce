@@ -1,22 +1,39 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
+import useAuth from "./useAuth";
+
 const useNavbarMenu = () => {
+  const { handleLogout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleOpen = () => setIsOpen(!isOpen);
+  const handleClose = () => setIsOpen(false);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const menuItems = [
-    { name: "Products", path: "/products" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Login", path: "/login" },
-  ];
+  let menuItems = [{ name: "Products", path: "/products" }];
+
+  // 👉 Guest ONLY
+  if (!user) {
+    menuItems.push(
+      { name: "About", path: "/about" },
+      { name: "Contact", path: "/contact" },
+      { name: "Login", path: "/login" },
+    );
+  }
+
+  // 👉 Normal User
+  if (user?.usertype === 2) {
+    menuItems.push(
+      { name: "Cart", path: "/cart" },
+      { name: "Dashboard", path: "/user-dashboard" },
+    );
+  }
+
+  // 👉 Admin
+  if (user?.usertype === 1) {
+    menuItems.push({ name: "Admin", path: "/admin-dashboard" });
+  }
 
   const navStyle = ({ isActive }) =>
     cn(
@@ -24,6 +41,15 @@ const useNavbarMenu = () => {
       isActive && "bg-blue-600 text-white",
     );
 
-  return { isOpen, handleOpen, handleClose, menuItems, navStyle };
+  return {
+    isOpen,
+    handleOpen,
+    handleClose,
+    menuItems,
+    navStyle,
+    user,
+    handleLogout,
+  };
 };
+
 export default useNavbarMenu;

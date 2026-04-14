@@ -6,12 +6,18 @@ import express from "express";
 import cors from "cors";
 import db from "./src/config/db.js";
 
-// import routes
+// admin routes
 import authRoute from "./src/routes/auth.routes.js";
 import dashboardRoute from "./src/routes/admin/dashboard.routes.js";
 import userRoutes from "./src/routes/admin/user.routes.js";
 import productRoutes from "./src/routes/admin/product.routes.js";
 import categoryRoutes from "./src/routes/admin/category.routes.js";
+
+// user routes
+import productRoutesUser from "./src/routes/users/product.routes.js";
+
+// public routes
+import productRoutesPublic from "./src/routes/product.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,12 +27,19 @@ app.use(cors());
 app.use(express.json());
 // app.get("/", (req, res) => res.send("Hello from the server!"));
 
-// Routes
+// Admin Routes
 app.use("/api/auth", authRoute);
 app.use("/api/admin", dashboardRoute);
 app.use("/api/users", userRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/categories", categoryRoutes);
+app.use("/api/admin/products", productRoutes);
+app.use("/api/admin/categories", categoryRoutes);
+
+// User Routes
+app.use("/api/users/products", productRoutesUser);
+
+// Public Routes
+app.use("/api/products", productRoutesPublic);
+
 // Start the server
 async function startServer() {
   try {

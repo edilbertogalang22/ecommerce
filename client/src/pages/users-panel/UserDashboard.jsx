@@ -1,8 +1,21 @@
+import useProducts from "../../hooks/useProducts";
+import ProductGrid from "../../components/ui/ProductGrid";
+
 const UserDashboard = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { products, loading } = useProducts();
+
   return (
-    <div>
-      <h1>User Dashboard</h1>
-      <p>Welcome, User!</p>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Welcome, {user?.firstname} 👋</h1>
+
+      <h2 className="text-lg font-semibold mb-4">Recommended Products</h2>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ProductGrid products={products.slice(0, 6)} />
+      )}
     </div>
   );
 };

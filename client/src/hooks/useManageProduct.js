@@ -13,8 +13,8 @@ const useManageProduct = () => {
   const fetchData = async () => {
     try {
       const [prodRes, catRes] = await Promise.all([
-        api.get("/products"),
-        api.get("/categories"),
+        api.get("/admin/products"),
+        api.get("/admin/categories"),
       ]);
 
       setProducts(prodRes.data);
@@ -75,7 +75,7 @@ const useManageProduct = () => {
   // Create new product
   const handleCreateProduct = async (formData) => {
     try {
-      await api.post("/products/create-product", formData);
+      await api.post("/admin/products/create-product", formData);
       await fetchData();
     } catch (err) {
       console.error(err);
@@ -84,7 +84,7 @@ const useManageProduct = () => {
 
   const handleUpdateProduct = async (id, data) => {
     try {
-      await api.put(`/products/update-product/${id}`, data);
+      await api.put(`/admin/products/update-product/${id}`, data);
       await fetchData();
     } catch (err) {
       console.error(err);
@@ -93,7 +93,7 @@ const useManageProduct = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      await api.delete(`/products/delete-product/${id}`); // Replace with your actual API endpoint
+      await api.delete(`/admin/products/delete-product/${id}`); // Replace with your actual API endpoint
       await fetchData();
     } catch (error) {
       console.error(error);

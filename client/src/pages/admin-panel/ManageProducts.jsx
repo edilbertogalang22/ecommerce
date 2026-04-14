@@ -141,6 +141,7 @@ const ManageProducts = () => {
                 <CardImage
                   src={product.image_url || "https://via.placeholder.com/150"}
                   alt={product.name}
+                  onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
                 />
                 <CardTitle>{product.name}</CardTitle>
                 <CardDescription>{product.category_name}</CardDescription>

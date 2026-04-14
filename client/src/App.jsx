@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Contact from "./pages/Contact";
+import ProductDetails from "./pages/ProductDetails";
 
 // prvate routes
 import AdminDashboard from "./pages/admin-panel/AdminDashboard";
@@ -18,7 +19,9 @@ import ManageProducts from "./pages/admin-panel/ManageProducts";
 import ManageOrders from "./pages/admin-panel/ManageOrders";
 
 // Users Panel
+import UserLayout from "./components/layout/UserLayout";
 import UserDashboard from "./pages/users-panel/UserDashboard";
+import Cart from "./pages/users-panel/Cart";
 
 // Not Found Page
 import NotFound from "./pages/NotFound";
@@ -33,6 +36,15 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+      </Route>
+
+      {/* USER ROUTES */}
+      <Route element={<PrivateRoute requiredRoles={2} />}>
+        <Route element={<UserLayout />}>
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
       </Route>
 
       {/* Private Routes */}
