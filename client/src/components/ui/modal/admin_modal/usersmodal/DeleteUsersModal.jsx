@@ -1,6 +1,6 @@
-import ModalWrapper from "../../ModalWrapper";
-import Input from "../../Input";
-import Button from "../../Button";
+import ModalWrapper from "../../../ModalWrapper";
+import Input from "../../../Input";
+import Button from "../../../Button";
 
 const DeleteUsersModal = ({ user, onClose, onConfirm }) => {
   if (!user) return null;

@@ -2,10 +2,10 @@ import useManageCategories from "../../hooks/useManageCategories";
 import { useModal } from "../../context/ModalContext";
 
 // modalsCategory
-import AddCategoryModal from "../../components/ui/modal/categorymodal/AddCategoryModal";
-import ViewCategoryModal from "../../components/ui/modal/categorymodal/ViewCategoryModal";
-import UpdateCategoryModal from "../../components/ui/modal/categorymodal/UpdateCategoryModal";
-import DeleteCategoryModal from "../../components/ui/modal/categorymodal/DeleteCategoryModal";
+import AddCategoryModal from "../../components/ui/modal/admin_modal/categorymodal/AddCategoryModal";
+import ViewCategoryModal from "../../components/ui/modal/admin_modal/categorymodal/ViewCategoryModal";
+import UpdateCategoryModal from "../../components/ui/modal/admin_modal/categorymodal/UpdateCategoryModal";
+import DeleteCategoryModal from "../../components/ui/modal/admin_modal/categorymodal/DeleteCategoryModal";
 
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";

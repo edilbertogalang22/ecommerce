@@ -15,7 +15,7 @@ const Navbar = () => {
   } = useNavbarMenu();
 
   return (
-    <nav className="bg-white text-black">
+    <nav className="bg-white text-black shadow-md fixed top-0 left-0 w-full z-50">
       <div className="w-full px-10">
         <div className="flex justify-between items-center h-16 text-2xl">
           {/* LOGO */}

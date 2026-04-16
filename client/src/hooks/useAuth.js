@@ -61,14 +61,14 @@ const useAuth = () => {
   const handleLogout = async () => {
     try {
       // Send request to backend with token in header only
-      await api.post("/auth/logout"); // No body needed
+      await api.post("/auth/logout");
 
       // Clear localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
-      // Redirect to login page
-      navigate("/login", { replace: true });
+      // Redirect to home page
+      navigate("/home", { replace: true });
     } catch (err) {
       console.error("Logout failed:", err);
     }

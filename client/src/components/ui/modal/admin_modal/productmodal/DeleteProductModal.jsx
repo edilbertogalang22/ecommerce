@@ -1,5 +1,5 @@
-import ModalWrapper from "../../ModalWrapper";
-import Button from "../../Button";
+import ModalWrapper from "../../../ModalWrapper";
+import Button from "../../../Button";
 
 const DeleteProduct = ({ product, onClose, onConfirm }) => {
   if (!product) return null;

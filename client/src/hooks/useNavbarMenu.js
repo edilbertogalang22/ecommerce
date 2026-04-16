@@ -11,11 +11,12 @@ const useNavbarMenu = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-  let menuItems = [{ name: "Products", path: "/products" }];
+  let menuItems = [];
 
   // 👉 Guest ONLY
   if (!user) {
     menuItems.push(
+      { name: "Products", path: "/products" },
       { name: "About", path: "/about" },
       { name: "Contact", path: "/contact" },
       { name: "Login", path: "/login" },
@@ -25,8 +26,9 @@ const useNavbarMenu = () => {
   // 👉 Normal User
   if (user?.usertype === 2) {
     menuItems.push(
+      { name: "Shop Now", path: "/user-dashboard" },
       { name: "Cart", path: "/cart" },
-      { name: "Dashboard", path: "/user-dashboard" },
+      { name: "Profile", path: "/user-profile" },
     );
   }
 

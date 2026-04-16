@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import useRegister from "../hooks/useRegister";
@@ -151,6 +152,13 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+          </div>
+
+          <div className="mb-4 flex items-center justify-center">
+            <span>Already have an account? </span>
+            <Link to="/login" className="text-blue-500 hover:underline ml-1">
+              Login here
+            </Link>
           </div>
 
           {/* Button */}

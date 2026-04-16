@@ -1,6 +1,6 @@
-import ModalWrapper from "../../ModalWrapper";
-import Input from "../../Input";
-import Button from "../../Button";
+import ModalWrapper from "../../../ModalWrapper";
+import Input from "../../../Input";
+import Button from "../../../Button";
 
 const ViewCategoryModal = ({ categories, onClose }) => {
   const formattedDate = categories?.created_at

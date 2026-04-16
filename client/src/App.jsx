@@ -22,6 +22,7 @@ import ManageOrders from "./pages/admin-panel/ManageOrders";
 import UserLayout from "./components/layout/UserLayout";
 import UserDashboard from "./pages/users-panel/UserDashboard";
 import Cart from "./pages/users-panel/Cart";
+import UserProfile from "./pages/users-panel/UserProfile";
 
 // Not Found Page
 import NotFound from "./pages/NotFound";
@@ -44,6 +45,7 @@ const App = () => {
         <Route element={<UserLayout />}>
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/user-profile" element={<UserProfile />} />
         </Route>
       </Route>
 

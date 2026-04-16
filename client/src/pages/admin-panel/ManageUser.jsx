@@ -1,8 +1,8 @@
 import useManageUser from "../../hooks/useManageUser";
 import { useModal } from "../../context/ModalContext";
-import ViewUsersModal from "../../components/ui/modal/usersmodal/ViewUsersModal";
-import UpdateUsersModal from "../../components/ui/modal/usersmodal/UpdateUsersModal";
-import DeleteUsersModal from "../../components/ui/modal/usersmodal/DeleteUsersModal";
+import ViewUsersModal from "../../components/ui/modal/admin_modal/usersmodal/ViewUsersModal";
+import UpdateUsersModal from "../../components/ui/modal/admin_modal/usersmodal/UpdateUsersModal";
+import DeleteUsersModal from "../../components/ui/modal/admin_modal/usersmodal/DeleteUsersModal";
 
 import Input from "../../components/ui/Input";
 import { Search, Eye, Pencil, Trash2 } from "lucide-react";

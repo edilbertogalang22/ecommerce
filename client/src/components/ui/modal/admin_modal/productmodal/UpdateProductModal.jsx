@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ModalWrapper from "../../ModalWrapper";
-import Input from "../../Input";
-import Button from "../../Button";
+import ModalWrapper from "../../../ModalWrapper";
+import Input from "../../../Input";
+import Button from "../../../Button";
 
 const UpdateProductModal = ({
   product,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import ModalWrapper from "../../ModalWrapper";
-import Input from "../../Input";
-import Button from "../../Button";
+import ModalWrapper from "../../../ModalWrapper";
+import Input from "../../../Input";
+import Button from "../../../Button";
 
 const UpdateUsersModal = ({ user, onClose, onSubmit }) => {
   const [formData, setFormData] = useState({

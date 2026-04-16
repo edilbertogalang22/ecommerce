@@ -6,7 +6,7 @@ const useManageUser = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await api.get("/users");
+      const response = await api.get("/admin/manage-users");
       setUsers(response.data);
     } catch (err) {
       console.error("Error fetching users:", err);
@@ -32,7 +32,7 @@ const useManageUser = () => {
 
   const handleUpdateUser = async (id, data) => {
     try {
-      await api.put(`/users/update-user/${id}`, data);
+      await api.put(`/admin/manage-users/update-user/${id}`, data);
       await fetchUsers(); // refresh UI
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ const useManageUser = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      await api.delete(`/users/delete-user/${id}`);
+      await api.delete(`/admin/manage-users/delete-user/${id}`);
       await fetchUsers(); // refresh UI
     } catch (err) {
       console.error(err);

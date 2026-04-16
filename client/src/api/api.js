@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
-// REQUEST INTERCEPTOR (OK NA ITO)
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -20,14 +19,13 @@ api.interceptors.request.use(
   },
 );
 
-// ❌ RESPONSE INTERCEPTOR (FIXED)
 let isLoggingOut = false;
 
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     const status = error.response?.status;
-    
+
     if (status === 401 && window.location.pathname.startsWith("/admin")) {
       window.location.href = "/login";
     }
@@ -38,7 +36,6 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
-      // ❌ REMOVED AUTO REDIRECT (important fix)
       console.warn("Unauthorized request (401) - user logged out");
     }
 

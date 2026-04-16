@@ -1,10 +1,10 @@
 import useManageProduct from "../../hooks/useManageProduct";
 
 import { useModal } from "../../context/ModalContext";
-import AddProductModal from "../../components/ui/modal/productmodal/AddProductModal";
-import ViewProductModal from "../../components/ui/modal/productmodal/ViewProductModal";
-import UpdateProductModal from "../../components/ui/modal/productmodal/UpdateProductModal";
-import DeleteProductModal from "../../components/ui/modal/productmodal/DeleteProductModal";
+import AddProductModal from "../../components/ui/modal/admin_modal/productmodal/AddProductModal";
+import ViewProductModal from "../../components/ui/modal/admin_modal/productmodal/ViewProductModal";
+import UpdateProductModal from "../../components/ui/modal/admin_modal/productmodal/UpdateProductModal";
+import DeleteProductModal from "../../components/ui/modal/admin_modal/productmodal/DeleteProductModal";
 
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";

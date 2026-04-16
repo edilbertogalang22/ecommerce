@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
-import useManageCategories from "../../../../hooks/useManageCategories";
-import ModalWrapper from "../../ModalWrapper";
-import Input from "../../Input";
-import Button from "../../Button";
+import { useState } from "react";
+import ModalWrapper from "../../../ModalWrapper";
+import Input from "../../../Input";
+import Button from "../../../Button";
 
-const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
-  const { timeAgo } = useManageCategories();
+const AddCategoryModal = ({ onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
   });
-
-  useEffect(() => {
-    if (categories) {
-      setFormData({
-        name: categories.name || "",
-        description: categories.description || "",
-      });
-    }
-  }, [categories]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +21,12 @@ const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onSubmit?.(categories.id, {
-      ...formData,
-      updated_at: new Date().toISOString(),
-    });
+    if (!formData.name.trim()) {
+      alert("Category name is required");
+      return;
+    }
 
+    onSubmit?.(formData);
     onClose?.();
   };
 
@@ -44,8 +34,8 @@ const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
     <ModalWrapper onClose={onClose}>
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-6">
         {/* HEADER */}
-        <h1 className="text-xl font-bold text-center bg-green-500 text-white p-2 rounded-lg">
-          Update Category
+        <h1 className="text-xl font-bold text-center bg-blue-500 text-white p-2 rounded-lg">
+          Add Category
         </h1>
 
         {/* FORM */}
@@ -62,6 +52,7 @@ const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
               placeholder="Enter category name"
             />
           </div>
+
           {/* DESCRIPTION */}
           <div>
             <label className="text-sm font-medium text-gray-600">
@@ -71,29 +62,22 @@ const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Optional description"
+              placeholder="Enter category description"
             />
           </div>
-          {/* SHOW CURRENT DB DATE (READ ONLY) */}{" "}
-          <div className="col-span-2">
-            {" "}
-            <label>Date Updated</label>{" "}
-            <Input
-              value={
-                categories?.updated_at ? timeAgo(categories.updated_at) : ""
-              }
-              className="text-center bg-gray-100 cursor-not-allowed"
-              readOnly
-            />{" "}
-          </div>
+
           {/* BUTTONS */}
           <div className="flex justify-end gap-3 mt-4">
-            <Button type="button" variant="secondary" onClick={onClose}>
+            <Button type="button" onClick={onClose} variant="secondary">
               Cancel
             </Button>
 
-            <Button type="submit" variant="primary">
-              Save Changes
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={!formData.name.trim()}
+            >
+              Create
             </Button>
           </div>
         </form>
@@ -102,4 +86,4 @@ const UpdateCategoryModal = ({ categories, onClose, onSubmit }) => {
   );
 };
 
-export default UpdateCategoryModal;
+export default AddCategoryModal;

@@ -6,6 +6,8 @@ import express from "express";
 import cors from "cors";
 import db from "./src/config/db.js";
 
+console.log("PROFILE ROUTE LOADED")
+
 // admin routes
 import authRoute from "./src/routes/auth.routes.js";
 import dashboardRoute from "./src/routes/admin/dashboard.routes.js";
@@ -15,6 +17,7 @@ import categoryRoutes from "./src/routes/admin/category.routes.js";
 
 // user routes
 import productRoutesUser from "./src/routes/users/product.routes.js";
+import userProfileRoutes from "./src/routes/users/userprofile.routes.js";
 
 // public routes
 import productRoutesPublic from "./src/routes/product.routes.js";
@@ -30,12 +33,13 @@ app.use(express.json());
 // Admin Routes
 app.use("/api/auth", authRoute);
 app.use("/api/admin", dashboardRoute);
-app.use("/api/users", userRoutes);
+app.use("/api/admin/manage-users", userRoutes);
 app.use("/api/admin/products", productRoutes);
 app.use("/api/admin/categories", categoryRoutes);
 
 // User Routes
 app.use("/api/users/products", productRoutesUser);
+app.use("/api/users/profile", userProfileRoutes);
 
 // Public Routes
 app.use("/api/products", productRoutesPublic);

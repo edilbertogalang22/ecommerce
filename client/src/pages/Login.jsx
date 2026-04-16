@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <section className="py-16 bg-white flex items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md border border-gray-200">
-        <h1 className="text-center font-semibold text-blue-500">Login</h1>
+        <h1 className="text-3xl text-center font-semibold text-blue-500">Login</h1>
         <div className="">
           <h2 className="text-2xl font-bold mb-4">Hello!</h2>
           {message && (

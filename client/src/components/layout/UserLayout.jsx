@@ -21,7 +21,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main>
+      <main className="flex-1 mt-16">
         <Outlet />
       </main>
     </div>
