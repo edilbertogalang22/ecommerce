@@ -1,11 +1,12 @@
 import Button from "../ui/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { HomeIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
 import useAdminSidebar from "../../hooks/useAdminSidebar";
 const AdminSidebar = () => {
   const { isOpen, handleOpen, handleClose, menuItems, linkStyle } =
     useAdminSidebar();
+  const navigate = useNavigate();
   return (
     <div>
       <header className="md:hidden flex justify-between items-center p-4 bg-gray-100 shadow">
@@ -23,7 +24,7 @@ const AdminSidebar = () => {
 
       <aside
         className={cn(
-          "fixed md:static top-0 left-0 h-screen w-64 bg-gray-800 text-white transition-transform duration-300 z-50",
+          "fixed md:static top-0 left-0 h-full w-64 bg-gray-800 text-white transition-transform duration-300 z-50",
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
@@ -82,6 +83,18 @@ const AdminSidebar = () => {
                 );
               })}
             </ul>
+          </nav>
+          <Button
+            variant="primary"
+            size="md"
+            onClick={() => navigate("/products")}
+            className="max-w-md mx-auto mb-4"
+          >
+            View Product
+          </Button>
+          {/* Footer */}
+          <nav className="mt-auto border-t border-gray-700 px-3 py-4 space-y-1">
+            <p className="text-sm text-gray-400">Admin Panel</p>
           </nav>
         </div>
       </aside>

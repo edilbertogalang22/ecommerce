@@ -13,9 +13,11 @@ import {
 } from "../components/ui/Card";
 
 const ProductDetails = () => {
-  const { product, loading, error } = useProductDetails();
+  const { product, loading, error, handleAddToCart, quantity, setQuantity } =
+    useProductDetails();
 
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log("USER:", user);
 
   if (loading) {
     return (
@@ -30,7 +32,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-10">
+    <div className="max-w-4xl mx-auto p-6 sm:p-6 lg:p-10">
       <Card className="overflow-hidden shadow-lg">
         {/* IMAGE */}
         <CardHeader>
@@ -56,6 +58,31 @@ const ProductDetails = () => {
             Stock: <span className="font-medium">{product.stock}</span>
           </p>
         </CardContent>
+        <div className="mt-6 flex items-center justify-between p-3">
+          <p className="text-sm text-gray-600">Quantity</p>
+
+          <div className="flex items-center gap-3 bg-gray-100 px-3 py-2 rounded-full">
+            <Button
+              variant="secondary"
+              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+              className="w-8 h-8 flex items-center justify-center rounded-full"
+            >
+              -
+            </Button>
+
+            <span className="text-base font-semibold w-6 text-center">
+              {quantity}
+            </span>
+
+            <Button
+              variant="primary"
+              onClick={() => setQuantity((prev) => prev + 1)}
+              className="w-8 h-8 flex items-center justify-center rounded-full"
+            >
+              +
+            </Button>
+          </div>
+        </div>
 
         {/* ACTION */}
         <CardFooter>
@@ -69,8 +96,16 @@ const ProductDetails = () => {
                 <Button className="w-full">Login</Button>
               </Link>
             </div>
+          ) : Number(user.usertype) === 2 ? (
+            <Button className="w-full" onClick={handleAddToCart}>
+              Add to Cart
+            </Button>
           ) : (
-            <Button className="w-full">Add to Cart</Button>
+            <div className="w-full bg-yellow-50 border border-yellow-200 p-4 rounded">
+              <p className="text-yellow-600 text-sm">
+                Admins cannot purchase products.
+              </p>
+            </div>
           )}
         </CardFooter>
       </Card>

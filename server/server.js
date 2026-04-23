@@ -18,6 +18,7 @@ import categoryRoutes from "./src/routes/admin/category.routes.js";
 // user routes
 import productRoutesUser from "./src/routes/users/product.routes.js";
 import userProfileRoutes from "./src/routes/users/userprofile.routes.js";
+import cartRoutes from "./src/routes/users/cart.routes.js";
 
 // public routes
 import productRoutesPublic from "./src/routes/product.routes.js";
@@ -40,6 +41,7 @@ app.use("/api/admin/categories", categoryRoutes);
 // User Routes
 app.use("/api/users/products", productRoutesUser);
 app.use("/api/users/profile", userProfileRoutes);
+app.use("/api/users/cart", cartRoutes);
 
 // Public Routes
 app.use("/api/products", productRoutesPublic);

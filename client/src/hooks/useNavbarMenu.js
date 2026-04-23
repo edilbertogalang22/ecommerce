@@ -33,7 +33,7 @@ const useNavbarMenu = () => {
   }
 
   // 👉 Admin
-  if (user?.usertype === 1) {
+  if (user?.usertype === 1) {   
     menuItems.push({ name: "Admin", path: "/admin-dashboard" });
   }
 

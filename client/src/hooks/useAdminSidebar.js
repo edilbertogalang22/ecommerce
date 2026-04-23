@@ -16,7 +16,7 @@ const useAdminSidebar = () => {
   };
 
   // Wrap handleLogout to close sidebar after logout
-  const hanleLogout = async () => {
+  const handleLogoutUser = async () => {
     await handleLogout(); // calls backend and clears localStorage
     handleClose(); // close sidebar
   };
@@ -27,7 +27,7 @@ const useAdminSidebar = () => {
     { name: "Manage Categories", icon: Tag, path: "/manage-categories" },
     { name: "Manage Products", icon: Box, path: "/manage-products" },
     { name: "Manage Orders", icon: ShoppingCart, path: "/manage-orders" },
-    { name: "Logout", icon: LogOut, action: hanleLogout },
+    { name: "Logout", icon: LogOut, action: handleLogoutUser },
   ];
 
   const linkStyle = ({ isActive }) =>
