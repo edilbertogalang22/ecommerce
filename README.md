@@ -105,6 +105,8 @@ This project showcases my ability to design and develop a full-stack web applica
 **🔑 User Login**
 ![Login Page](./client/screenshots/LoginPage.jpg)
 
+![Register Page](./client/screenshots/RegisterPage.jpg)
+
 ---
 
 ### 👤 User Pages
