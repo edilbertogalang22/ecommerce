@@ -184,7 +184,7 @@ This project showcases my ability to design and develop a full-stack web applica
 ![Manage Products](./client/screenshots/ProductManage.jpg)
 
 **➕ Add Product**
-![Add Product](./client/screenshots/AddProdut.jpg)
+![Add Product](./client/screenshots/AddProduct.jpg)
 
 **👁 View Product**
 ![View Product](./client/screenshots/ViewProduct.jpg)

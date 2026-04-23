@@ -61,7 +61,7 @@ const UpdateProductModal = ({
     <ModalWrapper onClose={onClose}>
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-6">
         {/* HEADER */}
-        <h1 className="text-lg font-bold text-center bg-gray-700 text-white py-2 rounded-lg">
+        <h1 className="text-lg font-bold text-center bg-green-500 text-white py-2 rounded-lg">
           Update Product
         </h1>
 
