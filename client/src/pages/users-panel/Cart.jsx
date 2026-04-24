@@ -11,7 +11,7 @@ import {
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 const Cart = () => {
-  const { cartItems, handleCheckout, handleRemoveItem, handleUpdateQuantity } =
+  const { cartItems, handleCheckOut, handleRemoveItem, handleUpdateQuantity } =
     useCart();
 
   return (
@@ -27,7 +27,7 @@ const Cart = () => {
         <div className="grid gap-4">
           {cartItems.map((item) => (
             <Card
-              key={item.id}
+              key={item.cart_id}
               className="flex flex-col sm:flex-row items-center gap-4 p-4 shadow-md"
             >
               {/* IMAGE */}
@@ -64,7 +64,7 @@ const Cart = () => {
                     variant="secondary"
                     size="sm"
                     onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity - 1)
+                      handleUpdateQuantity(item.cart_id, item.quantity - 1)
                     }
                   >
                     -
@@ -73,7 +73,7 @@ const Cart = () => {
                     variant="primary"
                     size="sm"
                     onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity + 1)
+                      handleUpdateQuantity(item.cart_id, item.quantity + 1)
                     }
                   >
                     +
@@ -82,7 +82,7 @@ const Cart = () => {
                 <Button
                   variant="danger"
                   size="sm"
-                  onClick={() => handleRemoveItem(item.id)}
+                  onClick={() => handleRemoveItem(item.cart_id)}
                   className="mt-2"
                 >
                   Remove
@@ -109,7 +109,7 @@ const Cart = () => {
             size="sm"
             variant="secondary"
             className="mt-2"
-            onClick={handleCheckout}
+            onClick={handleCheckOut}
           >
             Check Out
           </Button>

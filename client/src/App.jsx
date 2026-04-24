@@ -11,7 +11,7 @@ import Register from "./pages/Register";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 
-// prvate routes
+// private routes
 import AdminDashboard from "./pages/admin-panel/AdminDashboard";
 import ManageUser from "./pages/admin-panel/ManageUser";
 import ManageCategories from "./pages/admin-panel/ManageCategories";
@@ -23,6 +23,8 @@ import UserLayout from "./components/layout/UserLayout";
 import UserDashboard from "./pages/users-panel/UserDashboard";
 import Cart from "./pages/users-panel/Cart";
 import UserProfile from "./pages/users-panel/UserProfile";
+import Payment from "./pages/users-panel/Payment";
+import PaymentSuccessful from "./components/ui/PaymentSuccessful";
 
 // Not Found Page
 import NotFound from "./pages/NotFound";
@@ -46,6 +48,8 @@ const App = () => {
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment-successful" element={<PaymentSuccessful />} />
         </Route>
       </Route>
 

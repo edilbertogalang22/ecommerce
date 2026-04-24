@@ -33,16 +33,43 @@ const useProductDetails = () => {
     try {
       await api.post("/users/cart/add-to-cart", {
         product_id: product.id,
-        quantity: quantity,
+        quantity: Number(quantity),
       });
 
-      setTimeout(() => navigate("/cart"), 300);
+      navigate("/cart");
     } catch (err) {
       console.error("Error adding product to cart:", err);
     }
   };
 
-  return { product, loading, error, handleAddToCart, quantity, setQuantity };
+  const handleBuyNow = () => {
+    const checkoutItems = [
+      {
+        product_id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: Number(quantity),
+        image_url: product.image_url,
+      },
+    ];
+
+    localStorage.setItem("checkout_items", JSON.stringify(checkoutItems));
+
+    const total = product.price * quantity;
+    localStorage.setItem("total", total);
+
+    navigate("/payment");
+  };
+
+  return {
+    product,
+    setQuantity,
+    loading,
+    error,
+    handleAddToCart,
+    quantity,
+    handleBuyNow,
+  };
 };
 
 export default useProductDetails;

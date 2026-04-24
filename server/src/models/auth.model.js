@@ -11,9 +11,6 @@ export const loginUser = async ({ email, password }) => {
 
   const match = await bcrypt.compare(password, user.password);
 
-  //   console.log("MATCH:", match);
-  //   console.log("HASHED PASSWORD:", user.password);
-  //   console.log("INPUT:", password);
   if (!match) return null;
 
   return user;

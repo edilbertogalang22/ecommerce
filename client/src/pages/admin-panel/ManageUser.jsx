@@ -8,6 +8,7 @@ import Input from "../../components/ui/Input";
 import { Search, Eye, Pencil, Trash2 } from "lucide-react";
 import Button from "../../components/ui/Button";
 import { cn } from "../../lib/utils";
+import RecentUserCreated from "../../components/ui/RecentUserCreated";
 
 const ManageUser = () => {
   const {
@@ -17,7 +18,7 @@ const ManageUser = () => {
     handleUpdateUser,
     handleDeleteUser,
   } = useManageUser();
-  
+
   const { openModal, closeModal, modalType, modalData } = useModal();
 
   // remove admin users once (cleaner)
@@ -163,6 +164,9 @@ const ManageUser = () => {
         </div>
       </div>
 
+      <div>
+        <RecentUserCreated />
+      </div>
       {/* MODAL RENDER (FIXED) */}
       {modalMap[modalType] || null}
     </div>

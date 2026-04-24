@@ -6,19 +6,19 @@ import express from "express";
 import cors from "cors";
 import db from "./src/config/db.js";
 
-console.log("PROFILE ROUTE LOADED")
-
 // admin routes
 import authRoute from "./src/routes/auth.routes.js";
 import dashboardRoute from "./src/routes/admin/dashboard.routes.js";
 import userRoutes from "./src/routes/admin/user.routes.js";
 import productRoutes from "./src/routes/admin/product.routes.js";
 import categoryRoutes from "./src/routes/admin/category.routes.js";
+import orderRoutesAdmin from "./src/routes/admin/order.routes.js";
 
 // user routes
 import productRoutesUser from "./src/routes/users/product.routes.js";
 import userProfileRoutes from "./src/routes/users/userprofile.routes.js";
 import cartRoutes from "./src/routes/users/cart.routes.js";
+import orderRoutes from "./src/routes/users/order.routes.js";
 
 // public routes
 import productRoutesPublic from "./src/routes/product.routes.js";
@@ -37,11 +37,14 @@ app.use("/api/admin", dashboardRoute);
 app.use("/api/admin/manage-users", userRoutes);
 app.use("/api/admin/products", productRoutes);
 app.use("/api/admin/categories", categoryRoutes);
+app.use("/api/admin/orders", orderRoutesAdmin);
+
 
 // User Routes
 app.use("/api/users/products", productRoutesUser);
 app.use("/api/users/profile", userProfileRoutes);
 app.use("/api/users/cart", cartRoutes);
+app.use("/api/users/orders", orderRoutes);
 
 // Public Routes
 app.use("/api/products", productRoutesPublic);

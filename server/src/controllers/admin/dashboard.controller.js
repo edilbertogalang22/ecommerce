@@ -3,6 +3,8 @@ import {
   getTotalOrders,
   getTotalProducts,
   getTotalRevenue,
+  getLowStockProducts,
+  getRecentOrders,
 } from "../../models/admin/dashboard.model.js";
 
 export const getDashboardStats = async (req, res) => {
@@ -21,5 +23,25 @@ export const getDashboardStats = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to fetch dashboard stats" });
+  }
+};
+
+export const fetchRecentOrders = async (req, res) => {
+  try {
+    const orders = await getRecentOrders();
+    res.json(orders);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch recent orders" });
+  }
+};
+
+export const fetchLowStockProducts = async (req, res) => {
+  try {
+    const products = await getLowStockProducts();
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch low stock products" });
   }
 };

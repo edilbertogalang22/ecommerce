@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 
 export const useCart = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +25,7 @@ export const useCart = () => {
     try {
       await api.delete(`/users/cart/delete-cart/${id}`);
 
-      setCartItems((prev) => prev.filter((item) => item.id !== id));
+      setCartItems((prev) => prev.filter((item) => item.cart_id !== id));
     } catch (err) {
       console.error("Error removing item:", err);
     }
@@ -32,14 +34,16 @@ export const useCart = () => {
   // UPDATE QTY
   const handleUpdateQuantity = async (id, quantity) => {
     try {
-      if (quantity < 1) return; // prevent 0 or negative
+      if (quantity < 1) return;
 
       await api.put(`/users/cart/update-quantity/${id}`, {
         quantity,
       });
 
       setCartItems((prev) =>
-        prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
+        prev.map((item) =>
+          item.cart_id === id ? { ...item, quantity } : item,
+        ),
       );
     } catch (err) {
       console.error("Error updating quantity:", err);
@@ -50,6 +54,26 @@ export const useCart = () => {
     fetchCart();
   }, []);
 
+  const handleCheckOut = () => {
+    const checkoutItems = cartItems.map((item) => ({
+      product_id: item.product_id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    }));
+
+    localStorage.setItem("checkout_items", JSON.stringify(checkoutItems));
+
+    const total = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0,
+    );
+
+    localStorage.setItem("total", total);
+
+    navigate("/payment");
+  };
+
   return {
     cartItems,
     loading,
@@ -57,5 +81,6 @@ export const useCart = () => {
     handleRemoveItem,
     handleUpdateQuantity,
     setCartItems,
+    handleCheckOut,
   };
 };

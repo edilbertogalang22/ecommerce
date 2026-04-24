@@ -11,8 +11,9 @@ export const getCartItems = async (user_id) => {
 export const getCartByUsers = async (user_id) => {
   const [rows] = await db.query(
     `
-   SELECT 
-  c.id,
+  SELECT 
+  c.id AS cart_id,
+  c.product_id,
   c.quantity,
   p.name,
   p.price,

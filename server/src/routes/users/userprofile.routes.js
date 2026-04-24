@@ -4,6 +4,5 @@ import { getUserProfile } from "../../controllers/users/userprofile.controller.j
 const router = express.Router();
 
 router.get("/", verifyToken([2]), getUserProfile);
-console.log("PROFILE ROUTE");
 
 export default router;

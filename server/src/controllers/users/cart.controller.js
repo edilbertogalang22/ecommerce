@@ -30,7 +30,7 @@ export const getCartItemController = async (req, res) => {
 
 export const addToCartController = async (req, res) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.user.id;
 
     const { product_id, quantity } = req.body;
 

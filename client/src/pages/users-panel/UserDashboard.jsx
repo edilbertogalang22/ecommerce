@@ -7,14 +7,16 @@ const UserDashboard = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Welcome, {user?.firstname} 👋</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        Hello, {user?.firstname}'s 👋
+      </h1>
 
       <h2 className="text-lg font-semibold mb-4">Recommended Products</h2>
 
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <ProductGrid products={products.slice(0, 6)} />
+        <ProductGrid products={products} />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import db from "../../config/db.js";
 
 export const fetchAllProducts = async () => {
-   const [products] = await db.query(`
+  const [products] = await db.query(`
     SELECT 
     products.*,
     categories.name AS category_name
@@ -12,4 +12,3 @@ export const fetchAllProducts = async () => {
 
   return products;
 };
-
