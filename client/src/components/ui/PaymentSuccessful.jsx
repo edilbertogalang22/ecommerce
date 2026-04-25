@@ -33,7 +33,7 @@ const PaymentSuccessful = () => {
           </button>
 
           <button
-            onClick={() => navigate("/orders")}
+            onClick={() => navigate("/user-profile")}
             className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold transition"
           >
             📦 View My Orders

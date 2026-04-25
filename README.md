@@ -115,24 +115,25 @@ This project showcases my ability to design and develop a full-stack web applica
 ![Home Page](./client/screenshots/HomePage.jpg)
 
 **🛒 Shop Page**
-![Shop Page](./client/screenshots/UserLandingPage.jpg)
+![Shop Page](./client/screenshots/UsersProduct.jpg)
 
 **📄 Product View**
-![Product View](./client/screenshots/ProductAdd.jpg)
+![Product View](./client/screenshots/UsersProductView.jpg)
 
 **➕ Add to Cart**
 ![Add to Cart](./client/screenshots/AddToCartPage.jpg)
 
-**⚙️ Profile Settings**
+**🛒 Checkout**
+![Check Out](./client/screenshots/UsersPayments.jpg)
+
+**✅ Payment Success Confirmation**
+![Payment Message](./client/screenshots/UsersSuccessPayment.jpg)
+
+**👤 Profile Management**
 ![Profile Settings](./client/screenshots/ProfileSettings.jpg)
 
----
-
-### 🛒 Checkout
-
-🚧 Currently under development — core functionality (cart, authentication, and order flow) is already implemented.
-
----
+**📜 Order History & Tracking**
+![Order History](./client/screenshots/OrderHistory.jpg)
 
 ### 🛠 Admin Pages
 
@@ -141,12 +142,15 @@ This project showcases my ability to design and develop a full-stack web applica
 **📊 Admin Overview Dashboard**
 ![Admin Dashboard](./client/screenshots/AdminDashboard.jpg)
 
+**📊 Admin Overview Dashboard**
+![Admin Dashboard](./client/screenshots/AdminDashboard2.jpg)
+
 ---
 
 #### 👥 Manage Users
 
 **📋 User Management Table**
-![Manage Users](./client/screenshots/UserManage.jpg)
+![Manage Users](./client/screenshots/ManageUsers.jpg)
 
 **👁 View User Details**
 ![View Users](./client/screenshots/UserViewingInfo.jpg)
@@ -199,14 +203,18 @@ This project showcases my ability to design and develop a full-stack web applica
 
 ### 📦 Manage Orders
 
-🚧 Planned feature — will include order tracking and admin order management.
+**📦 Manage Orders**
+![Manage Orders](./client/screenshots/ManageOrders.jpg)
+
+**🔄 Update Order Status**
+![Status Orders](./client/screenshots/UpdateStatus.png)
 
 ---
 
 ### 🧾 Admin Viewing All Products
 
 **📋 Admin Product List View**
-![Admin View All Products](./client/screenshots/AdminViewAll.jpg)
+![Admin View All Products](./client/screenshots/AdminViewProducts.jpg)
 
 ---
 
@@ -224,6 +232,7 @@ This project showcases my ability to design and develop a full-stack web applica
 - react-router-dom
 - axios
 - lucide-react
+- react-qr-code
 
 ---
 

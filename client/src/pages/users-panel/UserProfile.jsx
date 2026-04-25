@@ -87,9 +87,15 @@ const UserProfile = () => {
         </div>
       </div>
       {/* ORDER HISTORY */}
+      <div className="bg-white shadow-sm rounded-xl p-6 mb-6 mt-5">
+        <h1 className="text-2xl font-bold text-gray-800">Order History</h1>
+        <p className="text-gray-500 text-sm">
+          View and manage your order history
+        </p>
+      </div>
       <div className="bg-white rounded-xl shadow-md p-6 mt-6">
         <h3 className="text-lg font-semibold text-gray-800 mb-6 border-b pb-2">
-          Order History
+          Order List
         </h3>
 
         <div className="space-y-4">
