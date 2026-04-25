@@ -32,7 +32,7 @@ const Payment = () => {
   );
 
   if (!user) {
-    return <div className="text-center mt-10">Loading user details...</div>;
+    return <div className="text-center mt-10">Loading user details....</div>;
   }
 
   return (

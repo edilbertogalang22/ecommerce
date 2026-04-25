@@ -210,8 +210,11 @@ This project showcases my ability to design and develop a full-stack web applica
 
 ### 🧾 Admin Viewing All Products
 
-**📋 Admin Product List View**
+**📦 Admin Product List**
 ![Admin View All Products](./client/screenshots/AdminViewProducts.jpg)
+
+**📦 Admin Product Details View**
+![Admin View Product](./client/screenshots/AdminViewProduct.jpg)
 
 ---
 
