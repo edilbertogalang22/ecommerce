@@ -14,13 +14,9 @@ This project showcases my ability to design and develop a full-stack web applica
 
 - Authentication (JWT)
 - Role-based access (Admin/User)
+- Secure Password Hashing using bcrypt
 - Product, Category, and User Management (CRUD)
 - Add to Cart functionality
-
-🚧 In Progress:
-
-- Checkout system
-- Order management
 
 ## 🧠 My Role
 
@@ -48,6 +44,7 @@ This project showcases my ability to design and develop a full-stack web applica
 - Add items to cart
 - Checkout orders
 - Manage profile settings
+- Orders history
 
 ---
 
@@ -239,7 +236,6 @@ This project showcases my ability to design and develop a full-stack web applica
 ### ⚙️ Backend
 
 - Node.js
-- Express.js
 - MySQL
 - MVC Architecture
 
@@ -266,3 +262,14 @@ ecommerce-app/
 ```
 
 ---
+
+## 👨‍💻 Author
+
+**Edilberto Galang**
+GitHub: https://github.com/edilbertogalang22
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
