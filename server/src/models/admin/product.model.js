@@ -38,8 +38,44 @@ export const createProducts = async (
   ]);
 };
 
-export const updateProducts = async () => {
-  const sql = `UPDATE products SET name = ?, description = ?, price = ?, stock = ?, category_id = ?, updated_at = NOW() WHERE id = ?`;
+export const updateProducts = async (
+  id,
+  name,
+  description,
+  price,
+  stock,
+  category_id,
+  image_url,
+  featured,
+) => {
+  const sql = `
+  UPDATE products
+  SET
+  name = ?,
+  description = ?,
+  price = ?,
+  stock = ?,
+  category_id = ?,
+  image_url = ?,
+  featured = ?,
+  updated_at = NOW()
+  WHERE id = ?
+  `;
+
+  return db.query(sql, [
+    name,
+    description,
+    price,
+    stock,
+    category_id,
+    image_url,
+    featured ? 1 : 0,
+    id,
+  ]);
 };
 
-export const deleteProducts = async () => {};
+export const deleteProducts = async (id) => {
+  const sql = `DELETE FROM products WHERE id = ?`;
+
+  return db.query(sql, [id]);
+};
