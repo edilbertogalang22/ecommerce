@@ -240,7 +240,6 @@ This project showcases my ability to design and develop a full-stack web applica
 
 - Node.js
 - MySQL
-- MVC Architecture
 
 ### 📦 Backend Dependencies
 
